@@ -1,0 +1,27 @@
+%{ 
+#include <stdio.h> 
+int words = 0; 
+int space = 0; 
+int endoflines = 0; 
+int characters = 0; 
+%} 
+%% 
+([a-zA-Z0-9]+[a-zA-Z0-9])* {words++;} 
+([ \t]) {space++;} 
+([\n]) {endoflines++;} 
+. {characters++;} 
+%% 
+int yywrap() 
+{ 
+return 1; 
+} 
+void main() 
+{ 
+printf("Enter String\n"); 
+yylex(); 
+printf("Number of words: %d\n", words); 
+printf("Number of spaces: %d\n", space); 
+printf("Number of end of line: %d\n", endoflines); printf("Number of characters: %d\n", characters); }
+
+
+//hello world a
